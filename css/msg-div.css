@@ -1,0 +1,177 @@
+.body-container {
+    padding: 40px 100px;
+}
+
+/*.all-container {*/
+/*    min-height: 600px;*/
+/*}*/
+
+/*.all-container .layui-tab-content {*/
+/*    padding: 30px 30px;*/
+/*}*/
+.msg-div-tab {
+    min-height: 600px;
+    padding: 10px 30px 30px;
+}
+
+.msg-div-scene1-tab, .msg-div-scene2-tab {
+    padding-top: 20px;
+}
+
+.msg-div-scene2-form-container {
+    /*margin-top: 50px;*/
+}
+/*.msg-div-description-box {*/
+/*    !*border: 1px dashed #000;*!*/
+/*    width: 85%;*/
+/*    margin: 100px auto 0;*/
+
+/*}*/
+
+/*.msg-div-description-box .msg-div-description-title {*/
+/*    font-size: 30px;*/
+/*}*/
+
+/*.msg-div-description-box .msg-div-description-words {*/
+/*    margin-top: 15px;*/
+/*}*/
+
+/*.msg-div-description-box .msg-div-description-words li {*/
+/*    font-size: 17px;*/
+/*    margin-top: 6px;*/
+/*}*/
+
+/*.msg-div-scene2-btn-line {*/
+/*    margin-top: 100px;*/
+/*    height: 60px;*/
+/*    !*border: 1px solid #000;*!*/
+/*}*/
+
+/*#msg-div-scene2-simulate-btn {*/
+/*    height: 60px;*/
+/*    font-size: 18px;*/
+/*    transition: 0.5s;*/
+/*}*/
+
+/*#msg-div-scene2-simulate-btn:hover {*/
+/*    transition: 0.5s;*/
+/*    border-radius: 20px;*/
+/*}*/
+
+/*#msg-div-scene2-simulate-btn i {*/
+/*    line-height: 60px;*/
+/*    font-size: 18px;*/
+/*}*/
+
+/*.msg-div-scene2-clear-history {*/
+/*    height: 60px;*/
+/*}*/
+
+/*.msg-div-scene2-clear-history a {*/
+/*    font-size: 10px;*/
+/*    position: absolute;*/
+/*    bottom: 0;*/
+/*    left: 7px;*/
+/*    cursor: pointer;*/
+/*    color: #2F4056;*/
+/*}*/
+
+/*.msg-div-scene2-clear-history a:hover {*/
+/*    text-decoration: underline;*/
+/*}*/
+
+.msg-div-scene2-delay-card, .msg-div-scene2-throughput-card {
+    /*min-height: 320px;*/
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.2);
+}
+
+#msg-div-scene2-delay-help-tips, #msg-div-scene2-throughput-help-tips {
+    line-height: 40px;
+    /*font-size: 20px;*/
+    color: #009688;
+    float: right;
+}
+#msg-div-scene2-delay-help-tips i, #msg-div-scene2-throughput-help-tips i {
+    font-size: 18px;
+}
+
+
+/*.msg-div-delay-card .layui-card-body, .msg-div-throughput-card .layui-card-body {*/
+/*    height: 250px;*/
+/*}*/
+
+.msg-div-scene2-delay-card .not-start-hint, .msg-div-scene2-throughput-card .not-start-hint {
+    text-align: center;
+    font-size: 25px;
+    line-height: 250px;
+    /*color: #c2c2c2;*/
+    color: darkgray;
+}
+
+.msg-div-scene2-delay-card .not-start-hint i, .msg-div-scene2-throughput-card .not-start-hint i {
+    font-size: 25px;
+}
+
+.msg-div-scene2-delay-card .layui-card-body, .msg-div-scene2-throughput-card .layui-card-body {
+    position: relative;
+    height: 250px;
+}
+
+.msg-div-scene2-delay-content, .msg-div-scene2-throughput-content {
+    /*border: 1px solid #000;*/
+    /*height: 250px;*/
+    height: 100%;
+    display: none;
+}
+
+#msg-div-scene2-delay-info, #msg-div-throughput-info {
+    height: 100%;
+    /*border: 1px solid #000;*/
+}
+
+#msg-div-scene2-delay-info .layui-card, #msg-div-throughput-info .layui-card {
+    /*width: 80%;*/
+    /*margin-left: auto;*/
+    height: 70%;
+    width: 95%;
+    margin: 12% auto;
+    background-color: floralwhite;
+}
+
+#msg-div-scene2-delay-info .layui-card-body {
+    font-size: 18px;
+    line-height: 35px;
+}
+
+#msg-div-throughput-info .layui-card-body {
+    font-size: 17px;
+    line-height: 35px;
+}
+
+#msg-div-scene2-delay-info .layui-card-body b, #msg-div-throughput-info .layui-card-body b{
+    color: #009688;
+}
+
+#msg-div-scene2-delay-chart, #msg-div-scene2-throughput-chart {
+    height: 100%;
+    /*border: 1px solid #000;*/
+}
+
+
+
+.msg-div-scene2-delay-card .loading-hint, .msg-div-scene2-throughput-card .loading-hint {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.05);
+    text-align: center;
+    line-height: 270px; /*需要算上上下padding部分*/
+}
+
+.msg-div-scene2-delay-card .loading-hint i, .msg-div-scene2-throughput-card .loading-hint i {
+    font-size: 50px;
+}
+

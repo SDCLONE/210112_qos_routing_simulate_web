@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./lib/layui/css/layui.css">
+    <link rel="stylesheet" href="./css/msg-div.css">
+    <link rel="stylesheet" href="css/iqrrl-route.css">
+    <script src="./lib/layui/layui.js"></script>
+    <script src="./lib/jquery/jquery-3.4.1.min.js"></script>
+    <script src="./lib/echartstool/echarts.min.js"></script>
+    <style>
+        /*body {*/
+        /*    background-color: #F0F0F0;*/
+        /*}*/
+    </style>
+</head>
+<body>
+<div>
+    <div class="body-container">
+        <div class="layui-tab layui-tab-card all-container">
+            <ul class="layui-tab-title">
+                <li class="layui-this">区分服务</li>
+                <li>路由协议</li>
+            </ul>
+            <div class="layui-tab-content">
+                <!--区分服务-->
+                <div class="layui-tab-item layui-show msg-div-tab">
+                    <!--区分服务场景一场景二路由导航-->
+                    <div class="layui-tab layui-tab-brief">
+                        <ul class="layui-tab-title">
+                            <li class="layui-this">场景一</li>
+                            <li>场景二</li>
+                        </ul>
+                        <div class="layui-tab-content">
+                            <!--区分服务场景一-->
+                            <div class="layui-tab-item msg-div-scene1-tab layui-show">内容1</div>
+                            <!--区分服务场景二-->
+                            <div class="layui-tab-item msg-div-scene2-tab">
+                                <div class="layui-row layui-col-space20">
+                                    <!--左侧表单以及按钮-->
+                                    <div class="layui-col-md6 layui-col-lg6">
+                                        <!--                                        <div class="msg-div-description-box">-->
+                                        <!--                                            <div class="msg-div-description-title">-->
+                                        <!--                                                基于安全消息广播需求和共享算法的区分服务-->
+                                        <!--                                            </div>-->
+                                        <!--                                            <ul class="msg-div-description-words">-->
+                                        <!--                                                <li><i class="layui-icon layui-icon-triangle-r"></i>根据基本安全消息（BSM）的内容（速度、加速度、位置）来计算其广播需求，即车辆的行驶状态。-->
+                                        <!--                                                </li>-->
+                                        <!--                                                <li><i class="layui-icon layui-icon-triangle-r"></i>根据车辆行驶状态以及车辆周围密度最终得出车辆的广播需求，达到区分基本安全消息的目的。-->
+                                        <!--                                                </li>-->
+                                        <!--                                                <li><i class="layui-icon layui-icon-triangle-r"></i>提出利用共享算法来动态调整竞争窗口值，增加公平性并减少冲突，使得消息更有效传输。-->
+                                        <!--                                                </li>-->
+                                        <!--                                            </ul>-->
+                                        <!--                                        </div>-->
+                                        <div class="msg-div-scene2-form-container">
+                                            <blockquote class="layui-elem-quote">此仿真展示时延和吞吐率与时间的关系</blockquote>
+                                            <fieldset class="layui-elem-field layui-field-title " style="margin-top: 20px;">
+                                                <legend>请输入参数</legend>
+                                            </fieldset>
+                                            <!--仿真参数表单-->
+                                            <form class="layui-form layui-form-pane" id="msg-div-scene2-form"
+                                                  lay-filter="msg-div-scene2-form" action="">
+                                                <div class="layui-form-item">
+                                                    <label class="layui-form-label">节点数</label>
+                                                    <div class="layui-input-inline">
+                                                        <input type="text" name="nodesNum" lay-verify="required|number"
+                                                               placeholder="请输入车辆节点数" autocomplete="off"
+                                                               class="layui-input">
+                                                    </div>
+                                                    <div class="layui-form-mid layui-word-aux">请输入整数</div>
+                                                </div>
+                                                <div class="layui-form-item">
+                                                    <label class="layui-form-label">仿真时间</label>
+                                                    <div class="layui-input-inline">
+                                                        <input type="text" name="simulationTime" lay-verify="required|number"
+                                                               placeholder="请输入仿真时间" autocomplete="off" class="layui-input">
+                                                    </div>
+                                                    <div class="layui-form-mid layui-word-aux">请输入整数（单位：秒）</div>
+                                                </div>
+                                                <div class="layui-form-item">
+                                                    <div class="layui-input-block">
+                                                        <button type="submit" class="layui-btn" lay-submit=""
+                                                                lay-filter="msg-div-scene2-form-submit">开始仿真 <i class="layui-icon layui-icon-play" style="font-size: 15px"></i>
+                                                        </button>
+                                                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+
+<!--                                        <div class="msg-div-scene2-btn-line">-->
+<!--                                            <div class="layui-col-md4 layui-col-sm4 layui-col-md-offset4 layui-col-sm-offset4">-->
+<!--                                                <button id="msg-div-scene2-simulate-btn" type="button"-->
+<!--                                                        class="layui-btn layui-btn-fluid">-->
+<!--                                                    开始仿真分析 <i class="layui-icon layui-icon-play"></i>-->
+<!--                                                </button>-->
+<!--                                            </div>-->
+<!--                                            <div class="layui-col-md2 layui-col-sm2 msg-div-scene2-clear-history">-->
+<!--                                                <a id="clear-msg-div-history">清除历史记录</a>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+                                    </div>
+                                    <!--右侧结果展示部分-->
+                                    <div class="layui-col-md6 layui-col-lg6">
+                                        <div class="layui-card msg-div-scene2-delay-card">
+                                            <div class="layui-card-header">时延信息 <a href="javascript:"
+                                                                                   id="msg-div-scene2-delay-help-tips"><i
+                                                    class="layui-icon layui-icon-about"></i></a></div>
+                                            <div class="layui-card-body">
+                                                <!--没有开始仿真时显示部分-->
+                                                <div class="not-start-hint">
+                                                    <i class="layui-icon layui-icon-tips"></i> 请点击左侧仿真按钮
+                                                </div>
+                                                <!--开始仿真时显示部分-->
+                                                <div class="msg-div-scene2-delay-content">
+                                                    <!--                                        <div class="layui-row">-->
+                                                    <div class="layui-col-md7 layui-col-sm7"
+                                                         id="msg-div-scene2-delay-chart"></div>
+                                                    <div class="layui-col-md5 layui-col-sm5" id="msg-div-scene2-delay-info">
+                                                        <div class="layui-card">
+                                                            <div class="layui-card-header">信息</div>
+                                                            <div class="layui-card-body">
+                                                                <p id="msg-div-scene2-delay-all-count">总包数：<b>allCount</b></p>
+                                                                <p id="msg-div-scene2-delay-avg-delay">平均时延：<b>avgDelay</b> s
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--                                        </div>-->
+                                                </div>
+                                                <!--异步过程中等待动画部分-->
+                                                <div class="loading-hint">
+                                                    <i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="layui-card msg-div-scene2-throughput-card">
+                                            <div class="layui-card-header">吞吐率信息 <a href="javascript:"
+                                                                                    id="msg-div-scene2-throughput-help-tips"><i
+                                                    class="layui-icon layui-icon-about"></i></a></div>
+                                            <div class="layui-card-body">
+                                                <!--没有开始仿真时显示部分-->
+                                                <div class="not-start-hint">
+                                                    <i class="layui-icon layui-icon-tips"></i> 请点击左侧仿真按钮
+                                                </div>
+                                                <!--开始仿真时显示部分-->
+                                                <div class="msg-div-scene2-throughput-content">
+                                                    <!--                                        <h2>hello msg-div-throughput</h2>-->
+                                                    <div class="layui-col-md7 layui-col-sm7"
+                                                         id="msg-div-scene2-throughput-chart"></div>
+                                                    <div class="layui-col-md5 layui-col-sm5"
+                                                         id="msg-div-throughput-info">
+                                                        <div class="layui-card">
+                                                            <div class="layui-card-header">信息</div>
+                                                            <div class="layui-card-body">
+                                                                <p id="msg-div-scene2-avg-throughput-rate">总吞吐率：<b>602.35</b>
+                                                                    KB/s</p>
+                                                                <p id="msg-div-scene2-simulate-time">总仿真时间：<b>9.989</b> s</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!--                                    &lt;!&ndash;异步过程中等待动画部分&ndash;&gt;-->
+                                                <div class="loading-hint">
+                                                    <i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--                    <div class="layui-row layui-col-space10">-->
+                    <!--                        &lt;!&ndash;左侧描述文字和按钮&ndash;&gt;-->
+                    <!--                        <div class="layui-col-md6 layui-col-lg6">-->
+                    <!--                            <div class="msg-div-description-box">-->
+                    <!--                                <div class="msg-div-description-title">-->
+                    <!--                                    基于安全消息广播需求和共享算法的区分服务-->
+                    <!--                                </div>-->
+                    <!--                                <ul class="msg-div-description-words">-->
+                    <!--                                    <li><i class="layui-icon layui-icon-triangle-r"></i>根据基本安全消息（BSM）的内容（速度、加速度、位置）来计算其广播需求，即车辆的行驶状态。-->
+                    <!--                                    </li>-->
+                    <!--                                    <li><i class="layui-icon layui-icon-triangle-r"></i>根据车辆行驶状态以及车辆周围密度最终得出车辆的广播需求，达到区分基本安全消息的目的。-->
+                    <!--                                    </li>-->
+                    <!--                                    <li><i class="layui-icon layui-icon-triangle-r"></i>提出利用共享算法来动态调整竞争窗口值，增加公平性并减少冲突，使得消息更有效传输。-->
+                    <!--                                    </li>-->
+                    <!--                                </ul>-->
+                    <!--                            </div>-->
+                    <!--                            <div class="msg-div-btn-line">-->
+                    <!--                                <div class="layui-col-md4 layui-col-sm4 layui-col-md-offset4 layui-col-sm-offset4">-->
+                    <!--                                    <button id="msg-div-simulate-btn" type="button" class="layui-btn layui-btn-fluid">-->
+                    <!--                                        开始仿真分析 <i class="layui-icon layui-icon-play"></i>-->
+                    <!--                                    </button>-->
+                    <!--                                </div>-->
+                    <!--                                <div class="layui-col-md2 layui-col-sm2 msg-div-clear-history">-->
+                    <!--                                    <a id="clear-msg-div-history">清除历史记录</a>-->
+                    <!--                                </div>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                        &lt;!&ndash;右侧结果展示部分&ndash;&gt;-->
+                    <!--                        <div class="layui-col-md6 layui-col-lg6">-->
+                    <!--                            <div class="layui-card msg-div-delay-card">-->
+                    <!--                                <div class="layui-card-header">时延信息 <a href="javascript:"-->
+                    <!--                                                                       id="msg-div-delay-help-tips"><i-->
+                    <!--                                        class="layui-icon layui-icon-about"></i></a></div>-->
+                    <!--                                <div class="layui-card-body">-->
+                    <!--                                    &lt;!&ndash;没有开始仿真时显示部分&ndash;&gt;-->
+                    <!--                                    <div class="not-start-hint">-->
+                    <!--                                        <i class="layui-icon layui-icon-tips"></i> 请点击左侧仿真按钮-->
+                    <!--                                    </div>-->
+                    <!--                                    &lt;!&ndash;开始仿真时显示部分&ndash;&gt;-->
+                    <!--                                    <div class="msg-div-delay-content">-->
+                    <!--                                        &lt;!&ndash;                                        <div class="layui-row">&ndash;&gt;-->
+                    <!--                                        <div class="layui-col-md7 layui-col-sm7" id="msg-div-delay-chart"></div>-->
+                    <!--                                        <div class="layui-col-md5 layui-col-sm5" id="msg-div-delay-info">-->
+                    <!--                                            <div class="layui-card">-->
+                    <!--                                                <div class="layui-card-header">信息</div>-->
+                    <!--                                                <div class="layui-card-body">-->
+                    <!--                                                    <p id="msg-div-delay-all-count">总包数：<b>allCount</b></p>-->
+                    <!--                                                    <p id="msg-div-delay-avg-delay">平均时延：<b>avgDelay</b> s</p>-->
+                    <!--                                                </div>-->
+                    <!--                                            </div>-->
+                    <!--                                        </div>-->
+                    <!--                                        &lt;!&ndash;                                        </div>&ndash;&gt;-->
+                    <!--                                    </div>-->
+                    <!--                                    &lt;!&ndash;异步过程中等待动画部分&ndash;&gt;-->
+                    <!--                                    <div class="loading-hint">-->
+                    <!--                                        <i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i>-->
+                    <!--                                    </div>-->
+                    <!--                                </div>-->
+                    <!--                            </div>-->
+
+                    <!--                            <div class="layui-card msg-div-throughput-card">-->
+                    <!--                                <div class="layui-card-header">吞吐率信息 <a href="javascript:"-->
+                    <!--                                                                        id="msg-div-throughput-help-tips"><i-->
+                    <!--                                        class="layui-icon layui-icon-about"></i></a></div>-->
+                    <!--                                <div class="layui-card-body">-->
+                    <!--                                    &lt;!&ndash;没有开始仿真时显示部分&ndash;&gt;-->
+                    <!--                                    <div class="not-start-hint">-->
+                    <!--                                        <i class="layui-icon layui-icon-tips"></i> 请点击左侧仿真按钮-->
+                    <!--                                    </div>-->
+                    <!--                                    &lt;!&ndash;开始仿真时显示部分&ndash;&gt;-->
+                    <!--                                    <div class="msg-div-throughput-content">-->
+                    <!--                                        &lt;!&ndash;                                        <h2>hello msg-div-throughput</h2>&ndash;&gt;-->
+                    <!--                                        <div class="layui-col-md7 layui-col-sm7" id="msg-div-throughput-chart"></div>-->
+                    <!--                                        <div class="layui-col-md5 layui-col-sm5" id="msg-div-throughput-info">-->
+                    <!--                                            <div class="layui-card">-->
+                    <!--                                                <div class="layui-card-header">信息</div>-->
+                    <!--                                                <div class="layui-card-body">-->
+                    <!--                                                    <p id="msg-div-avg-throughput-rate">总吞吐率：<b>602.35</b> KB/s</p>-->
+                    <!--                                                    <p id="msg-div-simulate-time">总仿真时间：<b>9.989</b> s</p>-->
+                    <!--                                                </div>-->
+                    <!--                                            </div>-->
+                    <!--                                        </div>-->
+                    <!--                                    </div>-->
+
+                    <!--                                    &lt;!&ndash;                                    &lt;!&ndash;异步过程中等待动画部分&ndash;&gt;&ndash;&gt;-->
+                    <!--                                    <div class="loading-hint">-->
+                    <!--                                        <i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i>-->
+                    <!--                                    </div>-->
+                    <!--                                </div>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                </div>
+                <!--路由协议-->
+                <div class="layui-tab-item iqrrl-route-tab">
+                    <!--左侧描述文字和按钮-->
+                    <div class="layui-col-md6 layui-col-lg6">
+                        <div class="iqrrl-route-description-box">
+                            <div class="iqrrl-route-description-title">
+                                基于可变交叉路口和强化学习的路由机制
+                            </div>
+                            <ul class="iqrrl-route-description-words">
+                                <li><i class="layui-icon layui-icon-triangle-r"></i>采用把整体最优问题拆分成两个子最优问题的方式，即先选道路交叉口，再选道路内下一跳，来保障整体方案的实时最优。
+                                </li>
+                                <li><i class="layui-icon layui-icon-triangle-r"></i>综合考虑道路连接度、时延以及距离来选择最佳的下一个道路交叉口，以尽力的避免局部最优问题。
+                                </li>
+                                <li><i class="layui-icon layui-icon-triangle-r"></i>在道路内采用强化学习来感知快速变化的拓扑并评估相邻节点的长期决策。
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="iqrrl-route-btn-line">
+                            <div class="layui-col-md4 layui-col-sm4 layui-col-md-offset4 layui-col-sm-offset4">
+                                <button id="iqrrl-route-simulate-btn" type="button"
+                                        class="layui-btn layui-btn-normal layui-btn-fluid">
+                                    开始仿真分析 <i class="layui-icon layui-icon-play"></i>
+                                </button>
+                            </div>
+                            <div class="layui-col-md2 layui-col-sm2 msg-div-scene2-clear-history">
+                                <a id="iqrrl-route-clear-history">清除历史记录</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--右侧仿真结果部分-->
+                    <div class="layui-col-md6 layui-col-lg6">
+                        <!--路由拓扑展示-->
+                        <div class="layui-card iqrrl-route-topo-card">
+                            <div class="layui-card-header">
+                                路由结果拓扑展示
+                            </div>
+                            <div class="layui-card-body">
+                                <!--仿真未开始提示部分-->
+                                <div class="not-start-hint">
+                                    <i class="layui-icon layui-icon-tips"></i> 请点击左侧仿真按钮
+                                </div>
+                                <!--仿真进行中loading部分-->
+                                <div class="loading-hint">
+                                    <i class="layui-icon layui-icon-loading-1 layui-anim layui-anim-rotate layui-anim-loop"></i>
+                                </div>
+                                <!--仿真结果展示部分-->
+                                <div class="iqrrl-route-content">
+                                    <h2>这里显示route content</h2>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--路由时延吞吐率表格展示-->
+                        <div class="layui-card iqrrl-route-info-card">
+                            <div class="layui-card-header">相关数据信息</div>
+                            <div class="layui-card-body">
+                                <!--仿真未开始提示部分-->
+                                <div class="not-start-hint">
+                                    <i class="layui-icon layui-icon-tips"></i> 请点击左侧仿真按钮
+                                </div>
+                                <!--仿真进行中loading部分-->
+                                <div class="loading-hint">
+                                    <i class="layui-icon layui-icon-loading-1 layui-anim layui-anim-rotate layui-anim-loop"></i>
+                                </div>
+                                <!-- 据表格部分-->
+                                <table id="iqrrl-info-table" class="iqrrl-info-table"
+                                       lay-filter="iqrrl-info-table"></table>
+                            </div>
+                        </div>
+                        <!--                        <div class="layui-card">-->
+                        <!--                            <div class="layui-card-header">hello</div>-->
+                        <!--                            <div class="layui-card-body" style="height: 200px; border: 1px solid #000;"></div>-->
+                        <!--                        </div>-->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    layui.use(['element'], function () {
+        const element = layui.element;
+
+    })
+    const HOST_ADDR = "192.168.142.128";
+    const MSG_DIV_PORT = "8080";
+    const IQRRL_ROUTE_PORT = "8081";
+</script>
+
+<script src="js/msg-div-scene2.js"></script>
+<script src="./js/iqrrl-route.js"></script>
+</body>
+</html>
