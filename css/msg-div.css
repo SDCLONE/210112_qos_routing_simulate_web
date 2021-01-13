@@ -18,9 +18,6 @@
     padding-top: 20px;
 }
 
-.msg-div-scene2-form-container {
-    /*margin-top: 50px;*/
-}
 /*.msg-div-description-box {*/
 /*    !*border: 1px dashed #000;*!*/
 /*    width: 85%;*/
@@ -79,6 +76,50 @@
 /*.msg-div-scene2-clear-history a:hover {*/
 /*    text-decoration: underline;*/
 /*}*/
+.msg-div-scene1-delay-card, .msg-div-scene1-throughput-card {
+    /*min-height: 320px;*/
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.2);
+}
+
+.msg-div-scene1-delay-card .not-start-hint, .msg-div-scene1-throughput-card .not-start-hint {
+    text-align: center;
+    font-size: 25px;
+    line-height: 250px;
+    /*color: #c2c2c2;*/
+    color: darkgray;
+}
+
+.msg-div-scene1-delay-card .not-start-hint i, .msg-div-scene1-throughput-card .not-start-hint i {
+    font-size: 25px;
+}
+
+.msg-div-scene1-delay-card .layui-card-body, .msg-div-scene1-throughput-card .layui-card-body {
+    position: relative;
+    height: 250px;
+}
+
+.msg-div-scene1-delay-content, .msg-div-scene1-throughput-content {
+    /*border: 1px solid #000;*/
+    /*height: 250px;*/
+    height: 100%;
+    display: none;
+}
+
+.msg-div-scene1-delay-card .loading-hint, .msg-div-scene1-throughput-card .loading-hint {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.05);
+    text-align: center;
+    line-height: 270px; /*需要算上上下padding部分*/
+}
+
+.msg-div-scene1-delay-card .loading-hint i, .msg-div-scene1-throughput-card .loading-hint i {
+    font-size: 50px;
+}
 
 .msg-div-scene2-delay-card, .msg-div-scene2-throughput-card {
     /*min-height: 320px;*/
