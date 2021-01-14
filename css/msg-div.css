@@ -121,6 +121,11 @@
     font-size: 50px;
 }
 
+#msg-div-scene1-delay-chart, #msg-div-scene1-throughput-chart {
+    height: 100%;
+    /*border: 1px solid #000;*/
+}
+
 .msg-div-scene2-delay-card, .msg-div-scene2-throughput-card {
     /*min-height: 320px;*/
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.2);
