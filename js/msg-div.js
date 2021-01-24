@@ -15,7 +15,7 @@ function moduleInit() {
             let startNodesNum = parseInt(formData.startNodesNum);
             let endNodesNum = parseInt(formData.endNodesNum);
             let interval = parseInt(formData.interval);
-            const simulationTime = 5;
+            const simulationTime = 10;
             if (startNodesNum > endNodesNum) {
                 layer.alert('起始节点数不可以大于终止节点数', {title: '错误提示'})
             } else {
@@ -25,7 +25,9 @@ function moduleInit() {
                 }
                 nodesList.push(endNodesNum);
                 layer.confirm(
-                    '<div>节点数序列为：' + nodesList.toString() + '</div><div>预计仿真时长为' + ((simulationTime + 10) * nodesList.length) + '秒，继续吗？</div>',
+                    '<div>节点数序列为：' + nodesList.toString() + '</div>' +
+                    '<div>预计仿真时长为' + ((simulationTime + 10) * nodesList.length) + '秒，继续吗？</div>' +
+                    '<div>若输入参数有缓存，则会节省大量时间</div>',
                     {title: '提示'}, function (index) {
                         //do something
                         layer.close(index);
@@ -52,6 +54,15 @@ function moduleInit() {
                                 console.log(rcvMsg);
                                 renderMsgDivScene1DelayChart(rcvMsg.msgDivDelay);
                                 renderMsgDivScene1ThroughputChart(rcvMsg.msgDivThroughput);
+
+                                //提示用户是否使用了历史记录
+                                if (rcvMsg.usingHistoryFlag === true) {
+                                    layer.msg("检测到本次提交的参数有历史生成记录<br>系统直接展示基于上次记录生成文件的结果", {
+                                        time: 10000, //10s后自动关闭
+                                        btn: ['了解']
+                                    });
+                                }
+
                             }
                         });
                     });
@@ -98,6 +109,13 @@ function moduleInit() {
                     console.log(rcvMsg);
                     renderMsgDivScene2DelayChart(rcvMsg.msgDivDelay);
                     renderMsgDivScene2ThroughputChart(rcvMsg.msgDivThroughput);
+                    //提示用户是否使用了历史记录
+                    if (rcvMsg.usingHistoryFlag === true) {
+                        layer.msg("检测到本次提交的参数有历史生成记录<br>系统直接展示基于上次记录生成文件的结果", {
+                            time: 10000, //10s后自动关闭
+                            btn: ['了解']
+                        });
+                    }
                 }
             });
             return false;
@@ -198,7 +216,7 @@ function renderMsgDivScene1ThroughputChart(throughputData) {
             type: 'value',
             name: '节点数',
             min: throughputData.nodesNumList[0] > 20 ? throughputData.nodesNumList[0] - 15 : 0,
-            max: throughputData.nodesNumList[pointNum - 1] + 25
+            max: throughputData.nodesNumList[pointNum - 1] + 20
         },
         yAxis: {
             type: 'value',
